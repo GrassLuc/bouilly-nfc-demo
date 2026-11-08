@@ -88,6 +88,7 @@
 
     .total p { position: relative; margin: 0; }
     .total .eyebrow { color: #c9e1d6; }
+    .pass .total { background: #17614c; }
     .total .amount {
       margin: .2rem 0 .75rem;
       font-size: clamp(2.5rem, 12vw, 3.75rem);
@@ -153,9 +154,9 @@
     <main>
       <p class="eyebrow">Terminal de contrôle · 01</p>
       <h1>Reçu d’amende</h1>
-      <p class="intro">Règlement fictif à la suite d’un contrôle des titres de transport.</p>
+      <p class="intro" id="intro">Règlement fictif à la suite d’un contrôle des titres de transport.</p>
 
-      <section class="receipt" aria-label="Détails du paiement simulé">
+      <section class="receipt" aria-labelledby="result-label">
         <div class="total">
           <svg class="route" viewBox="0 0 175 150" preserveAspectRatio="xMaxYMid slice" fill="none" aria-hidden="true">
             <path d="M92 -12v43l53 53v75M123 -12v34l52 52M31 -10v51l70 70v48" stroke="currentColor" stroke-width="2"/>
@@ -164,24 +165,48 @@
             <circle cx="31" cy="41" r="5" fill="#102e2c" stroke="currentColor" stroke-width="2"/>
             <circle cx="101" cy="111" r="5" fill="#102e2c" stroke="currentColor" stroke-width="2"/>
           </svg>
-          <p class="eyebrow">Montant de l’amende</p>
-          <p class="amount">50,00&nbsp;€</p>
-          <p><span class="status"><span aria-hidden="true">✓</span> Paiement simulé</span></p>
+          <p class="eyebrow" id="result-label">Montant de l’amende</p>
+          <p class="amount" id="result-value">50,00&nbsp;€</p>
+          <p><span class="status"><span aria-hidden="true">✓</span> <span id="status">Paiement simulé</span></span></p>
         </div>
 
         <dl class="details">
-          <div><dt>Motif</dt><dd>Absence de titre de transport valide</dd></div>
+          <div><dt id="detail-label">Motif</dt><dd id="detail-value">Absence de titre de transport valide</dd></div>
           <div><dt>Lieu du contrôle</dt><dd>Bouilly</dd></div>
-          <div><dt>Date</dt><dd><time datetime="2026-10-31T21:04:00+01:00">31 oct. 2026 · 21:04</time></dd></div>
-          <div><dt>Référence</dt><dd class="reference">DÉMO–0001</dd></div>
+          <div><dt>Date</dt><dd><time id="opened-at">—</time></dd></div>
+          <div><dt>Référence</dt><dd class="reference" id="reference">—</dd></div>
         </dl>
       </section>
     </main>
 
     <footer>
-      <p>Reçu fictif. Aucun paiement réel. Accessoire de mise en scène.</p>
+      <p id="disclaimer">Reçu fictif. Aucun paiement réel. Accessoire de mise en scène.</p>
       <span lang="zh-Hans">道具演示</span>
     </footer>
   </div>
+  <script>
+    const openedAt = new Date();
+    const date = document.getElementById('opened-at');
+    date.dateTime = openedAt.toISOString();
+    date.textContent = new Intl.DateTimeFormat('fr-FR', {
+      timeZone: 'Europe/Paris',
+      dateStyle: 'medium',
+      timeStyle: 'medium',
+    }).format(openedAt);
+    document.getElementById('reference').textContent = 'UFR761520261114' + openedAt.getTime();
+
+    if (new URLSearchParams(location.search).get('result') === 'pass') {
+      document.title = 'Contrôle validé · Bouilly · Démonstration';
+      document.body.classList.add('pass');
+      document.querySelector('h1').textContent = 'Contrôle validé';
+      document.getElementById('intro').textContent = 'Le titre de transport a été accepté.';
+      document.getElementById('result-label').textContent = 'Résultat du contrôle';
+      document.getElementById('result-value').textContent = 'Validé';
+      document.getElementById('status').textContent = 'Aucune amende';
+      document.getElementById('detail-label').textContent = 'Titre de transport';
+      document.getElementById('detail-value').textContent = 'Valide';
+      document.getElementById('disclaimer').textContent = 'Contrôle fictif. Accessoire de mise en scène.';
+    }
+  </script>
 </body>
 </html>
