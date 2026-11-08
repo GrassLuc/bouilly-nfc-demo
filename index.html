@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1f5ef">
+  <meta name="description" content="Reçu d’amende fictif pour un accessoire de contrôle des titres de transport à Bouilly.">
+  <title>Reçu d’amende · Bouilly · Démonstration</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #102e2c;
+      --muted: #45605b;
+      --paper: #f1f5ef;
+      --line: #d7e1d9;
+      --accent: #bdeebe;
+      --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .shell { width: min(100% - 2rem, 34rem); margin: 0 auto; }
+
+    header, footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 760; }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: .55rem;
+      background: var(--ink);
+      color: white;
+    }
+
+    .eyebrow, .status, .stamp, .reference {
+      font: 650 .72rem/1.45 var(--mono);
+      letter-spacing: .055em;
+      text-transform: uppercase;
+    }
+
+    .stamp {
+      color: var(--ink);
+      padding: .28rem .5rem;
+      border: 1px solid #8eb297;
+      border-radius: .3rem;
+    }
+
+    main { padding: clamp(1.65rem, 5vw, 3.4rem) 0 0; }
+    .eyebrow { margin: 0; color: var(--muted); }
+    h1 {
+      font-size: clamp(2rem, 7vw, 3.6rem);
+      letter-spacing: -.055em;
+      line-height: 1.04;
+      margin: .45rem 0 .85rem;
+    }
+
+    .intro { margin: 0 0 1.4rem; color: var(--muted); line-height: 1.5; }
+    .receipt {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      background: #fff;
+      box-shadow: 0 .5rem 1.5rem #102e2c0d;
+    }
+
+    .total {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.2rem, 5vw, 1.75rem);
+      background: var(--ink);
+      color: white;
+    }
+
+    .total p { position: relative; margin: 0; }
+    .total .eyebrow { color: #c9e1d6; }
+    .total .amount {
+      margin: .2rem 0 .75rem;
+      font-size: clamp(2.5rem, 12vw, 3.75rem);
+      font-weight: 780;
+      letter-spacing: -.055em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .route {
+      position: absolute;
+      top: 0;
+      right: -.25rem;
+      width: min(40%, 11rem);
+      height: 100%;
+      color: #5b877d;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .3rem .6rem;
+      border-radius: 2rem;
+      background: var(--accent);
+      color: var(--ink);
+    }
+
+    .details { margin: 0; padding: .15rem clamp(1.2rem, 5vw, 1.75rem); }
+    .details div {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: baseline;
+      gap: .8rem;
+      padding: .7rem 0;
+      line-height: 1.35;
+    }
+
+    .details div + div { border-top: 1px solid var(--line); }
+    dt { color: var(--muted); font-size: .86rem; }
+    dd { margin: 0; text-align: right; font-size: .9rem; font-weight: 650; }
+    .reference { overflow-wrap: anywhere; }
+
+    footer {
+      align-items: baseline;
+      margin: 1rem 0 1.5rem;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.5;
+    }
+
+    footer p { margin: 0; }
+    footer span { flex: none; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand"><span class="mark" aria-hidden="true">M</span> Contrôle des titres</div>
+      <span class="stamp">Accessoire</span>
+    </header>
+
+    <main>
+      <p class="eyebrow">Terminal de contrôle · 01</p>
+      <h1>Reçu d’amende</h1>
+      <p class="intro">Règlement fictif à la suite d’un contrôle des titres de transport.</p>
+
+      <section class="receipt" aria-label="Détails du paiement simulé">
+        <div class="total">
+          <svg class="route" viewBox="0 0 175 150" preserveAspectRatio="xMaxYMid slice" fill="none" aria-hidden="true">
+            <path d="M92 -12v43l53 53v75M123 -12v34l52 52M31 -10v51l70 70v48" stroke="currentColor" stroke-width="2"/>
+            <circle cx="92" cy="31" r="5" fill="#102e2c" stroke="currentColor" stroke-width="2"/>
+            <circle cx="145" cy="84" r="5" fill="#102e2c" stroke="currentColor" stroke-width="2"/>
+            <circle cx="31" cy="41" r="5" fill="#102e2c" stroke="currentColor" stroke-width="2"/>
+            <circle cx="101" cy="111" r="5" fill="#102e2c" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <p class="eyebrow">Montant de l’amende</p>
+          <p class="amount">50,00&nbsp;€</p>
+          <p><span class="status"><span aria-hidden="true">✓</span> Paiement simulé</span></p>
+        </div>
+
+        <dl class="details">
+          <div><dt>Motif</dt><dd>Absence de titre de transport valide</dd></div>
+          <div><dt>Lieu du contrôle</dt><dd>Bouilly</dd></div>
+          <div><dt>Date</dt><dd><time datetime="2026-10-31T21:04:00+01:00">31 oct. 2026 · 21:04</time></dd></div>
+          <div><dt>Référence</dt><dd class="reference">DÉMO–0001</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <p>Reçu fictif. Aucun paiement réel. Accessoire de mise en scène.</p>
+      <span lang="zh-Hans">道具演示</span>
+    </footer>
+  </div>
+</body>
+</html>
